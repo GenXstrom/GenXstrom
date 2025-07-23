@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilson Hutabarat - Email Copywriter & Cybersecurity Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --cyber-green: #00ff88;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, -50px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-text p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            animation: slideInLeft 1.2s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: slideInLeft 1.4s ease-out;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .email-mockup {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: perspective(1000px) rotateY(-15deg);
+        }
+
+        .email-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #28ca42; }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 2rem;
+        }
+
+        .portfolio-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: var(--light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: var(--primary);
+        }
+
+        /* Trust Indicators */
+        .trust-section {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .trust-grid {
+            max-width: 800px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .trust-item {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .trust-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Wilson.H</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Email Copy yang Convert</h1>
+                <p class="subtitle">Cybersecurity Expert Turned Email Copywriter</p>
+                <p>Saya transform daftar email Anda menjadi mesin penjualan yang powerful. Dengan kombinasi unik antara persuasive writing dan cybersecurity expertise, email Anda tidak hanya menarik, tapi juga trusted dan secure.</p>
+                <div class="cta-buttons">
+                    <a href="#portfolio" class="btn btn-primary">Lihat Portfolio</a>
+                    <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="email-mockup">
+                    <div class="email-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Subject: Keamanan Data Anda Dimulai Sekarang 🔒</div>
+                        <div style="color: #666; font-size: 0.9rem;">From: Wilson @ SecureEmail</div>
+                    </div>
+                    <div style="color: #333; font-size: 0.9rem;">
+                        <p>Hi [Name],</p>
+                        <p>74% bisnis Indonesia kehilangan customer karena email yang tidak trusted...</p>
+                        <p style="margin-top: 1rem;">
+                            <span style="background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 5px; display: inline-block;">
+                                Lihat Solusinya →
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title">Layanan Email Marketing Premium</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📧</div>
+                <h3>Welcome Email Series</h3>
+                <p>Transform pengunjung baru menjadi pelanggan setia dengan rangkaian email yang membangun trust dari hari pertama.</p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>3-5 email sequence</li>
+                    <li>Personalization strategy</li>
+                    <li>A/B testing recommendations</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛒</div>
+                <h3>Cart Recovery Campaign</h3>
+                <p>Selamatkan hingga 30% lost sales dengan email recovery yang persuasif dan urgent tanpa terkesan pushy.</p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>Multi-touch sequence</li>
+                    <li>Dynamic product display</li>
+                    <li>Psychological triggers</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Product Launch Email</h3>
+                <p>Create buzz dan anticipation untuk produk baru Anda dengan launch sequence yang proven menghasilkan sales.</p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>Pre-launch teasers</li>
+                    <li>Launch day blast</li>
+                    <li>Follow-up sequences</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>B2B Sales Email</h3>
+                <p>Cold email yang actually get responses. Perfect untuk software companies dan security consultants.</p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>Industry-specific messaging</li>
+                    <li>Trust-building approach</li>
+                    <li>CTA optimization</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📰</div>
+                <h3>Newsletter Strategy</h3>
+                <p>Newsletter bulanan yang readers tunggu-tunggu, bukan yang mereka unsubscribe.</p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>Content planning</li>
+                    <li>Engagement tactics</li>
+                    <li>Metrics tracking</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔒</div>
+                <h3>Security-First Email</h3>
+                <p>Unique service: Email copy yang lolos spam filter dan membangun authority di cybersecurity niche.</p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>Technical accuracy</li>
+                    <li>Compliance messaging</li>
+                    <li>Trust indicators</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">Portfolio & Case Studies</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div style="color: white; text-align: center;">
+                        <div style="font-size: 3rem;">🔐</div>
+                        <h3>SecureID Welcome Series</h3>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3>3-Part Welcome Series untuk Cybersecurity Startup</h3>
+                    <p>Mengubah free trial users menjadi paid subscribers dengan membangun trust dan demonstrating value.</p>
+                    <p style="margin-top: 1rem;"><strong>Key Strategy:</strong> Kombinasi education content dengan urgency messaging untuk drive conversions.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">B2B</span>
+                        <span class="tag">SaaS</span>
+                        <span class="tag">Cybersecurity</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div style="color: white; text-align: center;">
+                        <div style="font-size: 3rem;">🛍️</div>
+                        <h3>Fashion E-commerce Recovery</h3>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Cart Recovery untuk BatikModern.id</h3>
+                    <p>Email sequence dengan <strong>target</strong> untuk me-recover 35% abandoned carts dengan personalized approach dan cultural sensitivity.</p>
+                    <p style="margin-top: 1rem;"><strong>Results:</strong> Average recovery value Rp 750,000 per email sent.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">E-commerce</span>
+                        <span class="tag">Fashion</span>
+                        <span class="tag">B2C</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div style="color: white; text-align: center;">
+                        <div style="font-size: 3rem;">🎓</div>
+                        <h3>EdTech Launch Campaign</h3>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3>7-Day Launch untuk Online Course Platform</h3>
+                    <p>Pre-launch hingga post-launch sequence yang dirancang untuk men-generate 500+ enrollments dalam minggu pertama.</p>
+                    <p style="margin-top: 1rem;"><strong>Highlight:</strong> FOMO messaging combined dengan social proof untuk maximum impact.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Education</span>
+                        <span class="tag">Product Launch</span>
+                        <span class="tag">B2C</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div style="color: white; text-align: center;">
+                        <div style="font-size: 3rem;">💰</div>
+                        <h3>FinTech B2B Outreach</h3>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Cold Email Campaign untuk Payment Gateway</h3>
+                    <p>Targeted campaign ke SMEs Indonesia dengan <strong>target</strong> 18% response rate dan 5% conversion to demo.</p>
+                    <p style="margin-top: 1rem;"><strong>Secret:</strong> Localized pain points dengan global best practices.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">FinTech</span>
+                        <span class="tag">B2B</span>
+                        <span class="tag">Cold Outreach</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div style="color: white; text-align: center;">
+                        <div style="font-size: 3rem;">📊</div>
+                        <h3>SaaS Monthly Newsletter</h3>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3>High-Engagement Newsletter untuk Analytics Platform</h3>
+                    <p>Monthly newsletter dengan <strong>target</strong> 45% open rate yang combine tips, updates, dan soft selling.</p>
+                    <p style="margin-top: 1rem;"><strong>Format:</strong> Scannable sections dengan clear value propositions.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">SaaS</span>
+                        <span class="tag">Newsletter</span>
+                        <span class="tag">Retention</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div style="color: white; text-align: center;">
+                        <div style="font-size: 3rem;">🏦</div>
+                        <h3>Bank Security Awareness</h3>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Security Training Email Series untuk Banking</h3>
+                    <p>Employee education campaign yang bertujuan me-reduce phishing clicks by 70% dalam 3 bulan.</p>
+                    <p style="margin-top: 1rem;"><strong>Approach:</strong> Gamification meets serious security messaging.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">Banking</span>
+                        <span class="tag">Security</span>
+                        <span class="tag">Internal Comms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-section">
+        <h2 style="font-size: 2rem; margin-bottom: 2rem;">Why Clients Trust Me</h2>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-number">Strategis</div>
+                <p>Pendekatan Berbasis Data</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">Persuasif</div>
+                <p>Copy yang Mendorong Aksi</p>
+            </div>
+            <div class="trust-item">
+                <div class="trust-number">Kolaboratif</div>
+                <p>Kemitraan Jangka Panjang</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <h2>Ready to Transform Your Email Marketing?</h2>
+        <p>Let's discuss how I can help your business grow through strategic email copywriting.</p>
+        <div class="cta-buttons" style="justify-content: center;">
+            <a href="https://fastwork.id/user/wilson_hutabarat" class="btn btn-primary">Hire Me on Fastwork</a>
+            <a href="#" class="btn btn-secondary">Schedule Consultation</a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">
+            🎯 Special Offer: Free email audit untuk 3 clients pertama bulan ini!
+        </p>
+    </section>
+
+    <script>
+        // Hide loader when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards and portfolio items
+        document.querySelectorAll('.service-card, .portfolio-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Add click handlers for portfolio items
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // In real implementation, this would open a modal or navigate to detail page
+                alert('Detail portfolio akan ditampilkan dalam modal atau halaman terpisah');
+            });
+        });
+
+        // Dynamic typing effect for hero subtitle
+        const subtitle = document.querySelector('.hero-text .subtitle');
+        const originalText = subtitle.textContent;
+        subtitle.textContent = '';
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < originalText.length) {
+                subtitle.textContent += originalText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
